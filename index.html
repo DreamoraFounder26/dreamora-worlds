@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DREAMORA WORLDS — Explore Beyond Dreams</title>
+<style>
+:root {
+  --bg:#090b0f;--panel:#12151c;--panel2:#191d26;
+  --gold:#e8c779;--gold2:#f7e5ae;--muted:#9ba3b2;
+  --text:#f4f4f5;--green:#5fe0a0;--red:#ff747e;
+  --line:#292e38;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+font-family:Inter,Arial,sans-serif;line-height:1.5}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{
+outline:2px solid var(--gold);outline-offset:3px}
+header{position:sticky;top:0;z-index:10;background:#090b0fee;
+backdrop-filter:blur(15px);border-bottom:1px solid var(--line)}
+.nav{max-width:1200px;margin:auto;padding:14px 20px;
+display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:1px}
+.brand-mark{width:38px;height:38px;border:1px solid var(--gold);
+color:var(--gold);display:grid;place-items:center;border-radius:12px;
+font-size:20px}
+.brand small{display:block;font-size:10px;color:var(--muted);
+font-weight:500;letter-spacing:2px}
+.nav button,.btn{border:1px solid var(--line);background:var(--panel);
+color:var(--text);border-radius:10px;padding:10px 14px}
+.nav button:hover,.btn:hover{border-color:var(--gold)}
+main{max-width:1200px;margin:auto;padding:28px 20px 70px}
+.hero{position:relative;overflow:hidden;padding:40px 26px;
+border:1px solid #53452b;border-radius:22px;
+background:radial-gradient(ellipse at 85% 20%,#5c4720 0,transparent 36%),
+linear-gradient(130deg,#171920,#0c0d12 70%)}
+.eyebrow{color:var(--gold);font-size:11px;font-weight:800;
+letter-spacing:3px;text-transform:uppercase}
+h1{font-size:clamp(32px,6vw,64px);line-height:1.02;
+letter-spacing:-2px;margin:15px 0}
+h1 span{color:var(--gold)}
+.hero p{max-width:600px;color:#c1c5ce;font-size:16px}
+.gold-btn{background:var(--gold);color:#16120a;border:0;
+border-radius:10px;padding:12px 17px;font-weight:800}
+.gold-btn:hover{background:var(--gold2)}
+.btn-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);
+gap:12px;margin:20px 0}
+.stat,.card,.workspace{background:var(--panel);
+border:1px solid var(--line);border-radius:16px;padding:17px}
+.stat strong{display:block;color:var(--gold);font-size:23px}
+.stat span{font-size:12px;color:var(--muted)}
+.section-head{display:flex;justify-content:space-between;
+align-items:end;gap:12px;margin:34px 0 16px}
+h2{font-size:23px;margin:0}
+h3{margin:0 0 8px}
+.muted{color:var(--muted);font-size:13px}
+.world-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.card{position:relative;overflow:hidden;transition:.2s}
+.card:hover{transform:translateY(-3px);border-color:#8d7543}
+.world-top{display:flex;justify-content:space-between;align-items:center}
+.world-icon{width:48px;height:48px;display:grid;place-items:center;
+border:1px solid #635334;border-radius:13px;color:var(--gold);font-size:24px}
+.world-number{font-size:11px;color:var(--muted);letter-spacing:2px}
+.card p{color:#adb4c0;font-size:14px;min-height:42px}
+.tag{display:inline-block;border:1px solid var(--line);color:var(--gold);
+border-radius:30px;padding:4px 9px;font-size:11px;margin:0 4px 8px 0}
+.card .btn{width:100%;margin-top:8px}
+.workspace{margin-top:25px;scroll-margin-top:90px;min-height:260px}
+.workspace-head{display:flex;align-items:center;justify-content:space-between;
+gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);
+padding-bottom:14px;margin-bottom:18px}
+.workspace-head h2{color:var(--gold)}
+.hidden{display:none!important}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0}
+.metric{background:var(--panel2);padding:13px;border-radius:11px}
+.metric span{display:block;color:var(--muted);font-size:12px}
+.metric strong{font-size:21px;overflow-wrap:anywhere}
+.controls{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0}
+input,textarea,select{width:100%;background:#0b0d12;color:var(--text);
+border:1px solid var(--line);padding:11px;border-radius:9px}
+input[type=number]{max-width:130px}
+label{display:block;font-size:13px;color:#c6cad2;margin:12px 0 6px}
+.result{background:#0b0d12;border:1px solid var(--line);
+padding:14px;border-radius:11px;margin-top:13px;overflow-wrap:anywhere}
+.good{color:var(--green)}.bad{color:var(--red)}.gold{color:var(--gold)}
+.chart{height:170px;width:100%;display:block;background:#0b0d12;
+border-radius:10px;border:1px solid var(--line);margin:12px 0}
+.quiz-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.quiz-options button{text-align:left;white-space:normal}
+.shop-items{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.shop-item{background:var(--panel2);padding:13px;border-radius:11px}
+.shop-item button{width:100%;margin-top:8px}
+.codearea{font-family:monospace;min-height:130px;resize:vertical}
+footer{border-top:1px solid var(--line);padding:25px 20px;
+text-align:center;color:var(--muted);font-size:12px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+background:var(--gold);color:#15120a;padding:12px 18px;
+border-radius:12px;font-weight:700;z-index:30;max-width:90vw}
+.progress{height:7px;background:#282d37;border-radius:9px;overflow:hidden}
+.progress div{height:100%;width:0;background:var(--gold);transition:.3s}
+.small{font-size:12px;color:var(--muted)}
+@media(max-width:620px){
+ main{padding:17px 13px 50px}.nav{padding:12px}
+ .world-grid{grid-template-columns:1fr}.hero{padding:28px 19px}
+ .stats{gap:7px}.stat{padding:11px}.stat strong{font-size:18px}
+ .metrics{grid-template-columns:1fr 1fr}
+ .shop-items{grid-template-columns:1fr}
+ .quiz-options{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="brand">
+      <div class="brand-mark">D</div>
+      <div>DREAMORA <span style="color:var(--gold)">WORLDS</span>
+        <small>EXPLORE BEYOND DREAMS</small>
+      </div>
+    </div>
+    <button id="resetBtn" title="Reset your practice progress">Reset practice</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="eyebrow">Your curiosity is your superpower</div>
+    <h1>THE WORLD IS<br><span>YOUR CLASSROOM.</span></h1>
+    <p>Trade in a pretend market. Engineer a dream car. Build a virtual business.
+    Explore technology. Learn how the real world works by experimenting.</p>
+    <div class="btn-row">
+      <button class="gold-btn" onclick="openWorld('money')">Enter the worlds ↗</button>
+      <button class="btn" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Our mission</button>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><strong id="xp">0 XP</strong><span>Learning points</span></div>
+    <div class="stat"><strong id="completed">0 / 4</strong><span>Worlds explored</span></div>
+    <div class="stat"><strong id="streak">0</strong><span>Challenges completed</span></div>
+  </div>
+  <div class="progress"><div id="progressBar"></div></div>
+
+  <div class="section-head">
+    <div><div class="eyebrow">Choose your destination</div><h2>Explore the worlds</h2></div>
+    <span class="muted">04 WORLDS</span>
+  </div>
+
+  <section class="world-grid">
+    <article class="card">
+      <div class="world-top"><div class="world-icon">↗</div><span class="world-number">WORLD 01</span></div>
+      <h3 style="margin-top:15px">Money World</h3>
+      <p>Discover prices, market candles, virtual investing and the risks of trading.</p>
+      <span class="tag">SIMULATOR</span><span class="tag">VIRTUAL MONEY</span>
+      <button class="btn" onclick="openWorld('money')">Enter Money World →</button>
+    </article>
+    <article class="card">
+      <div class="world-top"><div class="world-icon">◇</div><span class="world-number">WORLD 02</span></div>
+      <h3 style="margin-top:15px">Machine World</h3>
+      <p>Explore how cars move, learn about drag and power, and design a dream vehicle.</p>
+      <span class="tag">ENGINEERING</span><span class="tag">CARS</span>
+      <button class="btn" onclick="openWorld('machine')">Enter Machine World →</button>
+    </article>
+    <article class="card">
+      <div class="world-top"><div class="world-icon">▦</div><span class="world-number">WORLD 03</span></div>
+      <h3 style="margin-top:15px">Business World</h3>
+      <p>Run a virtual shop, choose prices, sell products and learn about profit and costs.</p>
+      <span class="tag">ENTREPRENEURSHIP</span><span class="tag">BUDGETS</span>
+      <button class="btn" onclick="openWorld('business')">Enter Business World →</button>
+    </article>
+    <article class="card">
+      <div class="world-top"><div class="world-icon">⌘</div><span class="world-number">WORLD 04</span></div>
+      <h3 style="margin-top:15px">Future World</h3>
+      <p>Experiment with code, solve a logic challenge and learn how computers follow instructions.</p>
+      <span class="tag">CODING</span><span class="tag">LOGIC</span>
+      <button class="btn" onclick="openWorld('future')">Enter Future World →</button>
+    </article>
+  </section>
+
+  <section id="workspace" class="workspace hidden">
+    <div class="workspace-head">
+      <div><div class="eyebrow" id="worldLabel">WORLD EXPERIENCE</div><h2 id="worldTitle">World</h2></div>
+      <button class="btn" onclick="closeWorld()">✕ Close</button>
+    </div>
+    <div id="worldContent"></div>
+  </section>
+
+  <section id="about" class="workspace">
+    <div class="eyebrow">Why we exist</div>
+    <h2>Dream it. Discover it. Understand it.</h2>
+    <p class="muted">DREAMORA WORLDS turns curiosity into hands-on learning. Our goal is to help children explore complicated ideas safely through interactive experiments, simulations and creative challenges.</p>
+    <div class="result"><strong class="gold">Our promise</strong><br>Learn by doing. Make mistakes safely. Ask questions. Build something new.</div>
+    <p class="small">This is an independent prototype. It is not a real financial service. Market and business activities are educational simulations.</p>
+  </section>
+</main>
+
+<footer>DREAMORA WORLDS · FIRST PROTOTYPE · BUILT FOR CURIOUS MINDS</footer>
+<div id="toast" class="toast hidden" role="status"></div>
+
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const money = n => "₹" + Math.round(n).toLocaleString("en-IN");
+const defaults = {xp:0,done:[],challenges:0};
+let state = {...defaults};
+try {
+ const saved=JSON.parse(localStorage.getItem("dreamoraProgress")||"null");
+ if(saved && typeof saved.xp==="number" && Array.isArray(saved.done))
+   state={...defaults,...saved};
+} catch(e) {}
+function save(){
+ try{localStorage.setItem("dreamoraProgress",JSON.stringify(state));}
+ catch(e){}
+ renderStats();
+}
+function renderStats(){
+ $("xp").textContent=state.xp+" XP";
+ $("completed").textContent=state.done.length+" / 4";
+ $("streak").textContent=state.challenges;
+ $("progressBar").style.width=(state.done.length/4*100)+"%";
+}
+function toast(msg){
+ const t=$("toast");t.textContent=msg;t.classList.remove("hidden");
+ clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.add("hidden"),2500);
+}
+function reward(id,amount=10){
+ if(!state.done.includes(id))state.done.push(id);
+ state.xp+=amount;state.challenges++;save();
+ toast("Challenge complete! +"+amount+" XP");
+}
+function openWorld(id){
+ const names={money:"Money World",machine:"Machine World",business:"Business World",future:"Future World"};
+ $("worldTitle").textContent=names[id];$("worldLabel").textContent="INTERACTIVE EXPERIENCE";
+ const w=$("worldContent");
+ if(id==="money")moneyWorld(w);
+ if(id==="machine")machineWorld(w);
+ if(id==="business")businessWorld(w);
+ if(id==="future")futureWorld(w);
+ $("workspace").classList.remove("hidden");
+ $("workspace").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function closeWorld(){$("workspace").classList.add("hidden");}
+function moneyWorld(w){
+ let cash=10000,shares=0,price=100;
+ const prices=[100,104,101,108,105,112,109,115,111,118,114,121];
+ let i=0;
+ w.innerHTML=`
+ <p class="muted">Practice with virtual money only. Real markets can fall as well as rise; profits are never guaranteed.</p>
+ <div class="metrics">
+ <div class="metric"><span>Virtual balance</span><strong id="mCash">₹10,000</strong></div>
+ <div class="metric"><span>Share price</span><strong id="mPrice">₹100</strong></div>
+ <div class="metric"><span>Shares owned</span><strong id="mShares">0</strong></div></div>
+ <canvas class="chart" id="marketChart" width="700" height="170" aria-label="Illustrative virtual price candles"></canvas>
+ <div class="controls"><button class="gold-btn" id="buy">Buy 1 share</button><button class="btn" id="sell">Sell 1 share</button><button class="btn" id="nextPrice">Next market day</button></div>
+ <div class="result" id="marketResult">The price can go up or down. Buying a share means purchasing a small ownership stake in a company.</div>
+ <h3 style="margin-top:22px">Quick challenge</h3><p>Why can buying shares be risky?</p>
+ <div class="quiz-options"><button class="btn" id="mWrong">Prices only ever rise</button><button class="btn" id="mRight">Prices can fall too</button></div>
+ <p class="small">This is a simplified learning model, not a real stock exchange or investment advice.</p>`;
+ function draw(){
+  $("mCash").textContent=money(cash);$("mPrice").textContent=money(price);$("mShares").textContent=shares;
+  const c=$("marketChart"),ctx=c.getContext("2d"),W=c.width,H=c.height;
+  ctx.clearRect(0,0,W,H);
+  for(let y=20;y<H;y+=30){ctx.strokeStyle="#252a34";ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+  let arr=prices.slice(0,i+1);
+  let min=Math.min(...arr)-8,max=Math.max(...arr)+8;
+  arr.forEach((p,j)=>{
+   let prev=j?arr[j-1]:p-2;
+   let x=20+j*(W-40)/Math.max(11,arr.length-1);
+   let y1=H-15-(p-min)/(max-min)*(H-35);
+   let y0=H-15-(prev-min)/(max-min)*(H-35);
+   ctx.strokeStyle=p>=prev?"#5fe0a0":"#ff747e";
+   ctx.fillStyle=ctx.strokeStyle;
+   ctx.beginPath();ctx.moveTo(x,y0);ctx.lineTo(x,y1);ctx.stroke();
+   ctx.fillRect(x-5,Math.min(y0,y1),10,Math.max(3,Math.abs(y1-y0)));
+  });
+ }
+ $("buy").onclick=()=>{
+  if(cash>=price){cash-=price;shares++;$("marketResult").textContent="You bought one virtual share for "+money(price)+". Your remaining cash is "+money(cash)+".";draw();}
+  else $("marketResult").textContent="Not enough virtual cash to buy a share.";
+ };
+ $("sell").onclick=()=>{
+  if(shares>0){shares--;cash+=price;$("marketResult").textContent="You sold one share for "+money(price)+". Your cash is "+money(cash)+".";draw();}
+  else $("marketResult").textContent="You don't own any shares to sell.";
+ };
+ $("nextPrice").onclick=()=>{
+  if(i<prices.length-1)i++;else {i=0;price=prices[0];}
+  price=prices[i];draw();
+  $("marketResult").textContent="Market day "+(i+1)+": the illustrative price is "+money(price)+". Past prices don't predict future prices.";
+ };
+ $("mRight").onclick=()=>{reward("money",15);$("marketResult").textContent="Correct! Prices can rise or fall, so traders can lose money.";};
+ $("mWrong").onclick=()=>{$("marketResult").textContent="Not quite. Prices can rise or fall, and you can lose money.";};
+ draw();
+}
+function machineWorld(w){
+ w.innerHTML=`
+ <p class="muted">A car needs force to accelerate. Air resistance, often called drag, pushes against a moving car.</p>
+ <div class="metrics">
+ <div class="metric"><span>Engine power</span><strong id="engineVal">250 HP</strong></div>
+ <div class="metric"><span>Aerodynamic drag</span><strong id="dragVal">Medium</strong></div>
+ <div class="metric"><span>Efficiency score</span><strong id="effVal">60 / 100</strong></div></div>
+ <label for="engine">Choose engine power</label><input id="engine" type="range" min="100" max="600" value="250">
+ <label for="drag">Choose body shape</label><select id="drag"><option value="high">Boxy SUV — high drag</option><option value="medium" selected>Sports sedan — medium drag</option><option value="low">Streamlined car — low drag</option></select>
+ <div class="result" id="carResult">Change the settings to explore how design choices affect your car.</div>
+ <h3 style="margin-top:20px">Engineering challenge</h3><p>Which shape generally reduces air resistance at highway speed?</p>
+ <div class="quiz-options"><button class="btn" id="boxy">Tall, boxy shape</button><button class="btn" id="stream">Smooth, streamlined shape</button></div>`;
+ function update(){
+  let hp=+$("engine").value,d=$("drag").value;
+  let dragScore={high:25,medium:60,low:90}[d];
+  $("engineVal").textContent=hp+" HP";$("dragVal").textContent={high:"High",medium:"Medium",low:"Low"}[d];
+  $("effVal").textContent=Math.round(dragScore*.65+hp/600*35)+" / 100";
+  $("carResult").textContent=hp+" HP with a "+d+"-drag body. More power can improve acceleration, while a streamlined body can reduce air resistance. This is a simplified educational model.";
+ }
+ $("engine").oninput=update;$("drag").onchange=update;
+ $("boxy").onclick=()=>{$("carResult").textContent="A boxy shape generally pushes more air aside and creates more drag. Try the streamlined option.";};
+ $("stream").onclick=()=>{reward("machine",15);$("carResult").textContent="Correct! A streamlined shape can reduce drag. Real car design also considers safety, cooling, cost and stability.";};
+ update();
+}
+function businessWorld(w){
+ let cash=1000,stock=5,sold=0,price=100,cost=60;
+ w.innerHTML=`
+ <p class="muted">Run a virtual shop. Buy stock, set a selling price and learn the difference between revenue, costs and profit.</p>
+ <div class="metrics">
+ <div class="metric"><span>Shop cash</span><strong id="bCash">₹1,000</strong></div>
+ <div class="metric"><span>Stock available</span><strong id="bStock">5</strong></div>
+ <div class="metric"><span>Profit / loss</span><strong id="bProfit">₹0</strong></div></div>
+ <div class="result">Product: Dreamora notebooks · Stock cost: ₹60 each</div>
+ <label for="sellPrice">Your selling price per notebook (₹)</label>
+ <input id="sellPrice" type="number" min="1" max="10000" value="100">
+ <div class="controls"><button class="btn" id="buyStock">Buy 3 notebooks (₹180)</button><button class="gold-btn" id="sellBook">Sell 1 notebook</button></div>
+ <div class="result" id="bResult">Choose your price and start selling.</div>
+ <h3 style="margin-top:20px">Business challenge</h3><p>If a notebook costs ₹60 and you sell it for ₹100, what is the profit per notebook before other expenses?</p>
+ <div class="quiz-options"><button class="btn" id="profitWrong">₹160</button><button class="btn" id="profitRight">₹40</button></div>`;
+ function update(){
+  $("bCash").textContent=money(cash);$("bStock").textContent=stock;
+  $("bProfit").textContent=money(sold*(price-cost));
+ }
+ $("buyStock").onclick=()=>{
+  if(cash>=180){cash-=180;stock+=3;update();$("bResult").textContent="You bought 3 notebooks. Remember: stock purchases use cash.";}
+  else $("bResult").textContent="Not enough shop cash to buy more stock.";
+ };
+ $("sellBook").onclick=()=>{
+  price=Math.max(1,Math.min(10000,Number($("sellPrice").value)||1));
+  if(stock>0){stock--;sold++;cash+=price;update();$("bResult").textContent="Sold for "+money(price)+". The product cost ₹60, so this sale's gross profit is "+money(price-cost)+". Other expenses are not included.";}
+  else $("bResult").textContent="Out of stock! Buy more notebooks first.";
+ };
+ $("profitRight").onclick=()=>{reward("business",15);$("bResult").textContent="Correct! ₹100 − ₹60 = ₹40 gross profit before other expenses.";};
+ $("profitWrong").onclick=()=>{$("bResult").textContent="Try subtracting the cost from the selling price: ₹100 − ₹60.";};
+ update();
+}
+function futureWorld(w){
+ w.innerHTML=`
+ <p class="muted">Computers follow instructions. Try changing the message below, then run this tiny safe text experiment.</p>
+ <label for="codeInput">Your message</label>
+ <textarea class="codearea" id="codeInput" maxlength="180">Hello from DREAMORA WORLDS!</textarea>
+ <div class="controls"><button class="gold-btn" id="runCode">Run experiment ▶</button><button class="btn" id="clearOutput">Clear output</button></div>
+ <div class="result"><div class="small">OUTPUT</div><pre id="codeOutput" style="white-space:pre-wrap;overflow-wrap:anywhere;margin-bottom:0">Your result appears here.</pre></div>
+ <h3 style="margin-top:22px">Logic challenge</h3><p>A computer repeats an instruction 3 times. How many times does the instruction run?</p>
+ <div class="quiz-options"><button class="btn" id="two">2 times</button><button class="btn" id="three">3 times</button></div>
+ <p class="small">This learning activity displays text only. It does not execute arbitrary code.</p>`;
+ $("runCode").onclick=()=>{$("codeOutput").textContent=$("codeInput").value;};
+ $("clearOutput").onclick=()=>{$("codeOutput").textContent="";};
+ $("three").onclick=()=>{reward("future",15);$("codeOutput").textContent="Correct! A repeat instruction set to 3 runs three times.";};
+ $("two").onclick=()=>{$("codeOutput").textContent="Not quite. Three repetitions mean the instruction runs three times.";};
+}
+$("resetBtn").onclick=()=>{
+ if(confirm("Reset all DREAMORA practice progress on this browser?")){
+  state={...defaults,done:[]};save();toast("Practice progress reset.");
+ }
+};
+renderStats();
+</script>
+</body>
+</html>
